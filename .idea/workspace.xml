@@ -2,66 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf64a0af-afa5-4b4b-a0b2-3004490d29d3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.eslintignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/node-js-express--github-dataset-api-6kmle676kc8.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/www" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eslintrc.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/release.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jest.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lerna.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/.babelrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/.eslintignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/eslintrc.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/internal/generateNormalizeTuple.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/internal/release.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/jest.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/prettierrc.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/src/Factory.test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/src/Factory.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/src/JSONSerializer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/src/Properties.test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/src/Properties.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/src/Property.test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/src/Property.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/src/Serializer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/src/Test4.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/src/asType.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/src/decorators.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/src/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/src/normalize-tuple.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/src/typings.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/src/utils.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/tsconfig.cjs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/tsconfig.es2015.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/tsconfig.esm.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/graphql/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/protobuf/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/prettierrc.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tsconfig.cjs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tsconfig.es2015.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tsconfig.esm.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -92,10 +33,19 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="129">
-                <caret line="129" column="5" selection-start-line="129" selection-start-column="5" selection-end-line="129" selection-end-column="5" />
+              <first_editor relative-caret-position="183">
+                <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
               </first_editor>
               <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="236">
+              <caret line="223" lean-forward="true" selection-start-line="223" selection-end-line="223" />
             </state>
           </provider>
         </entry>
@@ -142,7 +92,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>fromJSONString</find>
       <find>decode</find>
       <find>parse(</find>
       <find>parse</find>
@@ -172,6 +121,7 @@
       <find>lengt</find>
       <find>build</find>
       <find>PropertyExtra</find>
+      <find>node_m</find>
     </findStrings>
     <replaceStrings>
       <replace>keyof this['data']</replace>
@@ -403,18 +353,18 @@
       <workItem from="1579521406005" duration="59196000" />
       <workItem from="1579621366703" duration="59000" />
       <workItem from="1579621532498" duration="2348000" />
-      <workItem from="1579623895950" duration="13297000" />
+      <workItem from="1579623895950" duration="13802000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="601288000" />
+    <option name="totallyTimeSpent" value="601793000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1440" height="767" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49457702" visible="true" weight="0.24034335" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49457702" visible="true" weight="0.24034335" />
       <window_info id="Structure" order="1" sideWeight="0.505423" side_tool="true" weight="0.27825466" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -431,7 +381,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="DB Execution Console" order="7" />
       <window_info anchor="bottom" id="GraphQL" order="8" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.25185186" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.25185186" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Docker" order="12" weight="0.3295129" />
@@ -629,13 +579,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="4" column="2" lean-forward="true" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="229" />
         </state>
       </provider>
     </entry>
@@ -885,11 +828,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="223" lean-forward="true" selection-start-line="223" selection-end-line="223" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="129">
-            <caret line="129" column="5" selection-start-line="129" selection-start-column="5" selection-end-line="129" selection-end-column="5" />
+          <first_editor relative-caret-position="183">
+            <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
           </first_editor>
           <second_editor />
         </state>

@@ -4,7 +4,7 @@ The type properties is an **experimental** project that should help you create b
 TypeScript NodeJS Rest APIs, by enabling you to create serializeable models that are JSON type
 safe and fully type checked.
 
-It aims to work along side with 3rd party libs integration like:
+It aims to work along side with 3rd party libs like:
 * [TypeORM](https://www.npmjs.com/package/typeorm)
 * [TypeGraphQL](https://www.npmjs.com/package/type-graphql)
 * [ClassValidator](https://www.npmjs.com/package/class-validator)
@@ -13,19 +13,26 @@ It aims to work along side with 3rd party libs integration like:
 > Although these libraries have no understanding of TypeProperties their decorators could very easily be
 implemented to support it
 
-The TypeProperties goes beyond [Metadata Reflection API](https://www.npmjs.com/package/reflect-metadata) as enforce
-you to declare at runtime your property types, and can once be read by decorators, it gives informations like:
+The TypeProperties goes beyond [Metadata Reflection API](https://www.npmjs.com/package/reflect-metadata) as enforces
+you to declare at runtime your property types, that can once be read by decorators giving information like:
+
 * `type`
+
     > proper type, not just `typeof` and `instanceof` like covered by Metadata Reflection API)
 * `default` 
+
     > If property has default value
+    
 * `nullable` 
+
     > If property is nullable
+    
 * `id` 
+
     > Implicit property index
     
 The TypeProperties uses advanced *type checking* rules to give you a proper TypeScript experience with it,
-make sure you check the example usage below and the key benefits of using it 
+make sure you check the example usage below 
  
 ### Example usage  
   

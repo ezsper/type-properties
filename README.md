@@ -42,8 +42,7 @@ import {
   Property,  
   Factory,  
   Descr,  
-} from '@type-properties/core';  
-// it works with class validator, typeorm and type-graphql  
+} from '@type-properties/core';
 import { IsEmail, validateSync } from 'class-validator';
 
 enum UserStatus {

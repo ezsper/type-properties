@@ -1,0 +1,66 @@
+{
+  "name": "type-properties",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Runtime properties for TypeScript",
+  "license": "MIT",
+  "author": {
+    "name": "Ezequiel S. Pereira",
+    "email": "ezequiel@ezsper.com",
+    "url": "https://ezsper.com"
+  },
+  "keywords": [
+    "serializeable",
+    "properties",
+    "reflect-metadata",
+    "graphql",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ezsper/type-properties.git"
+  },
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "es2015": "./dist/es2015/index.js",
+  "scripts": {
+    "packages": "lerna bootstrap",
+    "packages:test": "lerna exec -- npm run test",
+    "packages:build": "lerna exec -- npm run build",
+    "packages:release": "lerna exec -- npm run release",
+    "pretest": "npm install && lerna bootstrap && npm run build",
+    "build": "npm run build:es2015 && npm run build:esm && npm run build:cjs",
+    "build:es2015": "tsc --project ./tsconfig.es2015.json",
+    "build:esm": "tsc --project ./tsconfig.esm.json",
+    "build:cjs": "tsc --project ./tsconfig.cjs.json",
+    "release": "ts-node ./internal/release.ts",
+    "lint": "eslint .",
+    "test": "jest",
+    "lint:fix": "eslint . --ignore-pattern --fix"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.7.5",
+    "@babel/core": "^7.7.5",
+    "@babel/node": "^7.7.4",
+    "ts-node": "^8.6.1",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/plugin-proposal-decorators": "^7.8.0",
+    "@babel/plugin-transform-runtime": "^7.7.6",
+    "@babel/preset-env": "^7.7.6",
+    "@babel/preset-typescript": "^7.7.4",
+    "@types/jest": "^24.9.0",
+    "@types/node": "^12.12.17",
+    "@typescript-eslint/eslint-plugin": "^1.12.0",
+    "@typescript-eslint/parser": "^1.12.0",
+    "typescript": "^3.7.5",
+    "eslint": "^6.0.1",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.3.0",
+    "lerna": "^3.20.2",
+    "prettier": "^1.18.2"
+  }
+}

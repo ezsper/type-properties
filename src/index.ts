@@ -1,0 +1,1 @@
+throw new Error(`You must import "@type-properties/core" instead of "type-properties"`);

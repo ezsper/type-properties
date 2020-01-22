@@ -1,49 +1,23 @@
 # TypeProperties  
   
-The type properties is an **experimental** project that should help you create better
-TypeScript NodeJS Rest APIs, by enabling you to create serializeable models that are JSON type
+The TypeProperties is an **experimental** project that should help you create better
+TypeScript NodeJS Rest APIs. It enables you to create serializeable models that are JSON type
 safe and fully type checked.
 
-It aims to work along side with 3rd party libs like:
-* [TypeORM](https://www.npmjs.com/package/typeorm)
-* [TypeGraphQL](https://www.npmjs.com/package/type-graphql)
-* [ClassValidator](https://www.npmjs.com/package/class-validator)
-* [ProtobufJS](https://www.npmjs.com/package/protobufjs)
-
-> Although these libraries have no understanding of TypeProperties their decorators could very easily be
-implemented to support it
-
-The TypeProperties goes beyond [Metadata Reflection API](https://www.npmjs.com/package/reflect-metadata) as enforces
-you to declare at runtime your property types, that can once be read by decorators giving information like:
-
-* `type`
-
-    > proper type, not just `typeof` and `instanceof` like covered by Metadata Reflection API)
-* `default` 
-
-    > If property has default value
-    
-* `nullable` 
-
-    > If property is nullable
-    
-* `id` 
-
-    > Implicit property index
-    
-The TypeProperties uses advanced *type checking* rules to give you a proper TypeScript experience with it,
-make sure you check the example usage below 
+The TypeProperties is a solution for "writing type once", this is particularly useful when [Metadata Reflect API](https://www.npmjs.com/package/reflect-metadata)
+is not enough, as Reflect is only coerce when types are solely based on `typeof` and `instanceof`.
+In all the other cases when you wrap your type into an array or make it nullable with union types, Reflect stops preserving
+types.
  
 ### Example usage  
   
 ```typescript  
 import {  
-  Properties,  
-  Property,  
-  Factory,  
-  Descr,  
+  Properties,
+  Property,
+  Factory,
+  Descr,
 } from '@type-properties/core';
-import { IsEmail, validateSync } from 'class-validator';
 
 enum UserStatus {
     ACTIVE = 0;
@@ -69,12 +43,11 @@ export class UserIdentifier extends Factory(UserIdentifierProperties) {}
 export class UserProperties extends UserIdentifierProperties {  
     
   @Descr('The user global id')  
-  id = Property[2]({  
+  id = Property[2]({
     type: () => String,  
     default: () => UserIdentifier.stringify(this),  
   });  
-    
-  @IsEmail()  
+  
   @Descr(`The user email`)  
   email = Property[5]({  
     type: () => String,  
@@ -103,15 +76,15 @@ export class UserProperties extends UserIdentifierProperties {
   });  
     
   followers = Property[8]({  
-    type: () => [User],  
-    nullable: true,  
+    type: () => [User],
+    default: () => [],
   });
   
   status = Property[9]({  
     type: () => UserStatus,  
     default: () => UserStatus.ACTIVE, 
-  });  
-    
+  });
+
 }  
   
 export class User extends Factory(UserProperties) {}  
@@ -137,28 +110,120 @@ if (
 
 ```typescript
 // Static members
-interface UserStatic {
-	new (forge: Forge<UserProperties>): User;
-	getProperties(): ArrayLike<PropertyDefinitionOutput>;
-	fromPlainObject(obj: PlainObject<UserProperties>): User;  
-	fromValues(values: TupleValues<UserProperties>): User;  
-	stringify(obj: Forge<UserProperties>, encoding?: string): string;  
-	parse(str: string, encoding?: string): User;  
-	encode(forge: Forge<UserProperties>): Uint8Array;  
-	decode(bytes: Uint8Array): User;  
-	fromJSON(json: { [key: string]: any } | any[]): User;  
-	fromJSONString(jsonString: string): User;  
+export interface UserStatic {
+  /**
+   * The properties class
+   */
+  Properties: UserProperties;
+  /**
+   * The properties factory serializer
+   */
+  Serializer: JSONSerializer;
+
+  /**
+   * Get factory property definitions
+   */
+  getProperties(): ArrayLikePropertyDefinitions;
+
+  /**
+   * Get factory property names
+   */
+  getPropertyNames(): TupleKeys<UserProperties>;
+
+  /**
+   * Transform plain object to properties factory
+   * @param obj
+   */
+  fromPlainObject(obj: PlainObject<UserProperties>): User;
+
+  /**
+   * Transform json serialized object into properties factory
+   * @param json
+   */
+  fromJSON(json: { [key: string]: any } | any[]): User;
+
+  /**
+   * Transform json serialized string into properties factory
+   * @param jsonString
+   */
+  fromJSONString(jsonString: any): User;
+
+  /**
+   * Transform property tuple values into properties factory
+   * @param values
+   */
+  fromValues(values: TupleValues<UserProperties>): User;
+
+  /**
+   * Transform property tuple values into properties factory with strict values
+   * @param values
+   */
+  fromStrictValues(values: StrictTupleValues<UserProperties>): User;
+
+  /**
+   * Encodes properties factory to base64 string
+   * @param forge
+   * @param encoding
+   */
+  stringify(forge: Forge<UserProperties>, encoding?: 'hex' | 'base64'): string;
+
+  /**
+   * Parse a base64 string into properties factory
+   * @param str
+   * @param encoding
+   */
+  parse(str: string, encoding?: 'hex' | 'base64'): User;
+
+  /**
+   * Encodes properties factory into array of bytes
+   * @param forge
+   * @param encoding
+   */
+  encode(forge: Forge<UserProperties>): Uint8Array;
+
+  /**
+   * Decodes array of bytes into properties factory
+   * @param bytes
+   */
+  decode(bytes: Uint8Array): User;
 }
 
 // Prototype members
-interface UserPrototype {
-	toValues(): TupleValues<UserProperties>;  
-	toPlainObject(): PlainObject<UserProperties>;  
-	encode(): Uint8Array;  
-	stringify(encoding?: string): string;  
-	toJSON(): { [key: string]: any };  
-	toJSONValues(): any[]; 
-} 
-```  
+interface User {
+  /**
+   * Transform properties factory into tuple of property values
+   */
+  toValues(): TupleValues<UserProperties>;
 
-  
+  /**
+   * Return all property keys
+   */
+  toKeys(): TupleKeys<UserProperties>;
+
+  /**
+   * Transform properties factory into plain object
+   */
+  toPlainObject(): PlainObject<UserProperties>;
+
+  /**
+   * Transform properties factory into json ready object
+   */
+  toJSON(): { [key: string]: any };
+
+  /**
+   * Transform properties factory into json ready tuple of values
+   */
+  toJSONValues(): any[];
+
+  /**
+   * Stringify
+   * @param encoding
+   */
+  stringify(encoding?: 'hex' | 'base64'): string;
+
+  /**
+   * Transform serializeable factory into bytes
+   */
+  encode(): Uint8Array;
+}
+```

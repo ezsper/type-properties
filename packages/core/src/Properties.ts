@@ -107,7 +107,10 @@ export type EnsureProperties<T extends PropertiesClass> = IsAbstractClass<T> ext
       : T
     : PropertiesMustNotRepeatIndex<FindRepeatedIndex<T['prototype']>>;
 
-
+/**
+ * Decorator for testing and closing properties
+ * @constructor
+ */
 export function Properties() {
   return <T extends Function & { prototype: AbstractProperties<T['prototype']> }>(target: EnsureProperties<T>): T => {
     const properties = computeProperties(() => new (target as any)());
@@ -118,8 +121,12 @@ export function Properties() {
     if (typeof Reflect !== 'undefined' && typeof Reflect.defineMetadata !== 'undefined') {
       for (let i = 0; i < properties.length; i++) {
         const property = properties[i];
-        Reflect.defineMetadata('design:type', property.type(), (target as any).prototype, property.key);
-        Reflect.defineMetadata('@type-properties', property, (target as any).prototype, property.key);
+        try {
+          Reflect.defineMetadata('design:type', property.type(), (target as any).prototype, property.key);
+        } catch (error) {}
+        try {
+          Reflect.defineMetadata('@type-properties', property, (target as any).prototype, property.key);
+        } catch (error) {}
       }
     }
 
@@ -132,6 +139,10 @@ export function Properties() {
   };
 }
 
+/**
+ * Check if value is a properties class
+ * @param value
+ */
 export function isProperties(value: any): value is PropertiesClass {
   return value != null && value[$properties$] != null;
 }

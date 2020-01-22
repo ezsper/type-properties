@@ -4,7 +4,7 @@ import {
   PlainObject,
   PropertiesClass,
   Forge,
-  TupleKeys, AnyPropertyDefinitionOutput, StrictTupleValues, OptionalKeys, PropertyKeys,
+  TupleKeys, ArrayLikePropertyDefinitions, StrictTupleValues, OptionalKeys, PropertyKeys,
 } from './typings';
 import { getProperties, isProperties } from './Properties';
 import { Serializer } from './Serializer';
@@ -13,28 +13,118 @@ import { JSONSerializer} from './JSONSerializer';
 export const jsonSerializer = new JSONSerializer();
 
 export interface FactoryMember<T> {
+  /**
+   * Transform properties factory into tuple of property values
+   */
   toValues(): TupleValues<T>;
+
+  /**
+   * Return all property keys
+   */
   toKeys(): TupleKeys<T>;
+
+  /**
+   * Transform properties factory into plain object
+   */
   toPlainObject(): PlainObject<T>;
+
+  /**
+   * Transform properties factory into json ready object
+   */
   toJSON(): { [key: string]: any };
+
+  /**
+   * Transform properties factory into json ready tuple of values
+   */
   toJSONValues(): any[];
+
+  /**
+   * Stringify
+   * @param encoding
+   */
   stringify(encoding?: 'hex' | 'base64'): string;
+
+  /**
+   * Transform serializeable factory into bytes
+   */
   encode(): Uint8Array;
 }
 
 export interface FactoryStaticMembers<T extends PropertiesClass> {
+  /**
+   * The properties class
+   */
   Properties: T;
+  /**
+   * The properties factory serializer
+   */
   Serializer: Serializer;
-  getProperties<This extends FactoryClass<T>>(this: This): ArrayLike<AnyPropertyDefinitionOutput>;
+
+  /**
+   * Get factory property definitions
+   */
+  getProperties<This extends FactoryClass<T>>(this: This): ArrayLikePropertyDefinitions;
+
+  /**
+   * Get factory property names
+   */
   getPropertyNames<This extends FactoryClass<T>>(this: This): TupleKeys<T['prototype']>;
+
+  /**
+   * Transform plain object to properties factory
+   * @param obj
+   */
   fromPlainObject<This extends FactoryClass<T>>(obj: PlainObject<T['prototype']>): This['prototype'];
+
+  /**
+   * Transform json serialized object into properties factory
+   * @param json
+   */
   fromJSON<This extends FactoryClass<T>>(json: { [key: string]: any } | any[]): This['prototype'];
+
+  /**
+   * Transform json serialized string into properties factory
+   * @param jsonString
+   */
   fromJSONString<This extends FactoryClass<T>>(jsonString: any): This['prototype'];
+
+  /**
+   * Transform property tuple values into properties factory
+   * @param values
+   */
   fromValues<This extends FactoryClass<T>>(values: TupleValues<T['prototype']>): This['prototype'];
+
+  /**
+   * Transform property tuple values into properties factory with strict values
+   * @param values
+   */
   fromStrictValues<This extends FactoryClass<T>>(values: StrictTupleValues<T['prototype']>): This['prototype'];
+
+  /**
+   * Encodes properties factory to base64 string
+   * @param forge
+   * @param encoding
+   */
   stringify<This extends FactoryClass<T>>(forge: Forge<T['prototype']>, encoding?: 'hex' | 'base64'): string;
+
+  /**
+   * Parse a base64 string into properties factory
+   * @param str
+   * @param encoding
+   */
   parse<This extends FactoryClass<T>>(str: string, encoding?: 'hex' | 'base64'): This['prototype'];
+
+  /**
+   * Encodes properties factory into array of bytes
+   * @param forge
+   * @param encoding
+   */
   encode<This extends FactoryClass<T>>(forge: Forge<T['prototype']>): Uint8Array;
+
+  /**
+   * Decodes array of bytes into properties factory
+   * @param bytes
+   */
   decode<This extends FactoryClass<T>>(bytes: Uint8Array): This['prototype'];
 }
 

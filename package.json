@@ -1,6 +1,6 @@
 {
   "name": "type-properties",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "description": "Runtime properties for TypeScript",
   "license": "MIT",
@@ -20,7 +20,7 @@
     "type": "git",
     "url": "git+https://github.com/ezsper/type-properties.git"
   },
-  "main": "./dist/cjs/index.js",
+  "main": "./dist/index.js",
   "module": "./dist/esm/index.js",
   "es2015": "./dist/es2015/index.js",
   "scripts": {
@@ -29,7 +29,7 @@
     "packages:build": "lerna exec -- npm run build",
     "packages:release": "lerna exec -- npm run release",
     "pretest": "npm install && lerna bootstrap && npm run build",
-    "build": "npm run build:es2015 && npm run build:esm && npm run build:cjs",
+    "build": "rimraf dist && npm run build:es2015 && npm run build:esm && npm run build:cjs",
     "build:es2015": "tsc --project ./tsconfig.es2015.json",
     "build:esm": "tsc --project ./tsconfig.esm.json",
     "build:cjs": "tsc --project ./tsconfig.cjs.json",
@@ -44,6 +44,7 @@
     "@babel/core": "^7.7.5",
     "@babel/node": "^7.7.4",
     "ts-node": "^8.6.1",
+    "rimraf": "^3.0.0",
     "@babel/plugin-proposal-class-properties": "^7.7.4",
     "@babel/plugin-proposal-decorators": "^7.8.0",
     "@babel/plugin-transform-runtime": "^7.7.6",

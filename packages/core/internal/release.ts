@@ -1,28 +1,15 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import * as ChildProcess from 'child_process';
+import { execSync, ExecSyncOptions } from 'child_process';
 
-const exec = ((command: string, options: ChildProcess.ExecOptions, ...args: any[]) => {
-  const child = ChildProcess.exec(command, {
-    cwd: process.cwd(),
-    env: process.env,
-    ...options,
-  });
-  if (child.stdout) {
-    child.stdout.on('data', function (data) {
-      process.stdout.write(data);
-    });
-  }
-  if (child.stderr) {
-    child.stderr.on('data', function (data) {
-      process.stderr.write(data);
-    });
-  }
-  return child;
-}) as typeof ChildProcess.exec;
+const execSyncOptions: ExecSyncOptions = {
+  cwd: process.cwd(),
+  env: process.env,
+  stdio: 'inherit',
+};
 
-exec('npm run build');
-exec('npm run test');
+execSync('npm run build', execSyncOptions);
+execSync('npm run test', execSyncOptions);
 
 const packageJSON = JSON.parse(
   fs.readFileSync(path.resolve(__dirname, '../package.json')).toString()

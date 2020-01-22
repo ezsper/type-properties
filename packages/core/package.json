@@ -1,6 +1,6 @@
 {
   "name": "@type-properties/core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "description": "Runtime properties for TypeScript",
   "license": "MIT",
@@ -20,14 +20,14 @@
     "type": "git",
     "url": "git+https://github.com/ezsper/type-properties.git"
   },
-  "main": "./dist/cjs/index.js",
+  "main": "./dist/index.js",
   "module": "./dist/esm/index.js",
   "es2015": "./dist/es2015/index.js",
   "scripts": {
-    "build": "npm run generateNormalizeTuple && npm run build:es2015 && npm run build:esm && npm run build:cjs",
+    "build": "npm run generateNormalizeTuple && rimraf dist && npm run build:es2015 && npm run build:esm && npm run build:cjs",
+    "build:cjs": "tsc --project ./tsconfig.cjs.json",
     "build:es2015": "tsc --project ./tsconfig.es2015.json",
     "build:esm": "tsc --project ./tsconfig.esm.json",
-    "build:cjs": "tsc --project ./tsconfig.cjs.json",
     "type-check": "tsc --noEmit",
     "release": "ts-node ./internal/release.ts",
     "generateNormalizeTuple": "ts-node ./internal/generateNormalizeTuple.ts",
@@ -58,6 +58,7 @@
     "eslint-plugin-prettier": "^3.1.0",
     "prettier": "^1.18.2",
     "jest": "^24.9.0",
+    "rimraf": "^3.0.0",
     "ts-jest": "^24.3.0",
     "reflect-metadata": "^0.1.13"
   }

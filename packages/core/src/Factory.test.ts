@@ -4,7 +4,6 @@ import { Property } from './Property';
 import { Factory } from './Factory';
 import { Forge } from './typings';
 
-
 describe('Factory', () => {
   enum UserStatus {
     ACTIVE = 1,
@@ -44,6 +43,11 @@ describe('Factory', () => {
       type: () => UserStatus,
       default: () => UserStatus.ACTIVE,
     });
+
+    followers = Property[7]({
+      type: () => [User],
+      default: () => [],
+    });
   }
 
 
@@ -65,6 +69,7 @@ describe('Factory', () => {
       'email',
       'registeredAt',
       'status',
+      'followers',
     ]);
   });
 
@@ -93,6 +98,14 @@ describe('Factory', () => {
       displayName: 'Doe, John',
       registeredAt,
       status: UserStatus.INACTIVE,
+      followers: [
+        new User({
+          id: '2',
+          email: 'another@another',
+          givenName: 'Anna',
+          familyName: 'Doe',
+        }),
+      ],
     });
     expect(user.displayName).toBe('Doe, John');
     expect(user.registeredAt).toBe(registeredAt);
@@ -109,6 +122,7 @@ describe('Factory', () => {
       'example@example',
       registeredAt,
       UserStatus.INACTIVE,
+      [],
     ]);
     expect(user.displayName).toBe('Doe, John');
     expect(user.registeredAt).toBe(registeredAt);
@@ -125,6 +139,7 @@ describe('Factory', () => {
       displayName: 'Doe, John',
       registeredAt,
       status: UserStatus.INACTIVE,
+      followers: [],
     });
     expect(user.displayName).toBe('Doe, John');
     expect(user.registeredAt).toBe(registeredAt);
@@ -167,7 +182,7 @@ describe('Factory', () => {
     const parsedUser = User.parse(stringified);
     expect(
       Buffer.from(stringified, 'base64').toString(),
-    ).toBe(`["1","John","Doe","Doe, John","example@example","2020-01-21T02:48:39.918Z","ACTIVE"]`);
+    ).toBe('["1","John","Doe","Doe, John","example@example","2020-01-21T02:48:39.918Z","ACTIVE",[]]');
     expect(parsedUser.displayName).toBe('Doe, John');
     expect(parsedUser.registeredAt === registeredAt).toBe(false);
     expect(parsedUser.registeredAt).toStrictEqual(registeredAt);
